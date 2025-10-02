@@ -6,80 +6,86 @@
 /*   By: aissa <aissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:11:07 by azrulsaleh        #+#    #+#             */
-/*   Updated: 2025/10/01 15:50:44 by aissa            ###   ########.fr       */
+/*   Updated: 2025/10/02 15:38:50 by aaissa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
-#include "cub3d.h"
+# include "cub3d.h"
+
+typedef struct s_tile
+{
+	int mx;
+	int	my;
+	int psx;
+	int psy;
+}	t_tile;
 
 typedef struct s_minimap
 {
-    int player_x;
-    int player_y;
-    double ray_dir_x;
-    double ray_dir_y;
-    int line_start_x;
-    int line_start_y;
-    int line_end_x;
-    int line_end_y;
-    int ray_color;
-}   t_minimap;
+	int		player_x;
+	int		player_y;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		line_start_x;
+	int		line_start_y;
+	int		line_end_x;
+	int		line_end_y;
+	int		ray_color;
+}	t_minimap;
 
 typedef struct s_ray
 {
-    double  camera_x;
-    double  ray_dir_x;
-    double  ray_dir_y;
-    int     map_x;
-    int     map_y;
-    double  side_dist_v;
-    double  side_dist_h;
-    double  step_size_x;
-    double  step_size_y;
-    double  corrected_dist;
-    int     step_dir_x;
-    int     step_dir_y;
-    int     hit;
-    int     side;
-    int     line_height;
-    int     draw_start;
-    int     draw_end;
-}   t_ray;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_v;
+	double	side_dist_h;
+	double	step_size_x;
+	double	step_size_y;
+	double	corrected_dist;
+	int		step_dir_x;
+	int		step_dir_y;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}	t_ray;
 
 typedef struct s_player
 {
-    double  x; 
-    double  y;       
-    char    dir;
-    double  dir_x;  
-    double  dir_y;
-    double  plane_x;
-    double  plane_y; 
-    int     mouse_x;
-}   t_player;
-
+	double	x;
+	double	y;
+	char	dir;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	int		mouse_x;
+}	t_player;
 
 typedef struct s_img
 {
-    void    *img;
-    char    *addr; 
-    int     bpp;
-    int     line_len;
-    int     endian;
-    int     width;
-    int     height;
-}   t_img;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
 
 typedef struct s_img_tex
 {
-    t_img   no;
-    t_img   so;
-    t_img   we;
-    t_img   ea;
-}   t_img_tex;
-
+	t_img	no;
+	t_img	so;
+	t_img	we;
+	t_img	ea;
+}	t_img_tex;
 
 typedef struct s_bg
 {
@@ -116,13 +122,13 @@ typedef struct s_mlx
 
 typedef struct s_cub
 {
-    t_mlx       mlx;
-    t_map       map;
-    t_tex       tex;
-    t_bg        bg;
-    t_img_tex   img_tex;
-    t_player    player;
-}   t_cub;
+	t_mlx		mlx;
+	t_map		map;
+	t_tex		tex;
+	t_bg		bg;
+	t_img_tex	img_tex;
+	t_player	player;
+}	t_cub;
 
 //parse
 bool	parsing(t_cub *cub, char **av);
@@ -148,6 +154,6 @@ void	set_player_values(t_cub *cub);
 bool	validate_closed_map(t_cub *cub, int y, int x);
 
 // free 
-void free_cub(t_cub *cub, int should_cleanup);
+void	free_cub(t_cub *cub, int should_cleanup);
 
 #endif

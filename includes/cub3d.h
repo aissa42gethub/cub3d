@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaissa <aaissa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/02 15:23:52 by aaissa            #+#    #+#             */
+/*   Updated: 2025/10/02 15:29:11 by aaissa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
 # include <stdio.h>
-#include <limits.h>
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
@@ -35,22 +46,21 @@
 # define FOV 60
 
 // Window dimensions
-# define WIN_WIDTH 1024
-# define WIN_HEIGHT 768
+# define WIN_WIDTH 2024
+# define WIN_HEIGHT 1768
 
 // Minimap 
-#define MINIMAP_SIZE       8
-#define MINIMAP_TILE_SIZE  20
-#define MINIMAP_OFFSET   5
+# define MINIMAP_SIZE       9
+# define MINIMAP_TILE_SIZE  40
+# define MINIMAP_OFFSET   15
 
 // Movement constants
 # define MOVE_SPEED 0.09
 # define ROT_ANGLE 0.0524
 
-
 // WASD and left/right arrows key codes
-# define LARROW 65361
 # define RARROW 65363
+# define LARROW 65361
 
 # define W      119
 # define S    	115
@@ -62,11 +72,6 @@
 # define KEY_PRESS 2
 # define MOUSE_MOVE 6
 # define CLOSE 17
-
-// Event masks
-# define KEY_PRESS_MASK (1L<<0)
-# define CLOSE_MASK (1L<<17)
-# define MOUSE_MASK (1L<<6)
 
 bool	print_error(char *msg);
 
