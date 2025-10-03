@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaissa <aaissa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aissa <aissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 16:43:06 by aaissa            #+#    #+#             */
-/*   Updated: 2025/10/02 16:50:52 by aaissa           ###   ########.fr       */
+/*   Updated: 2025/10/03 10:55:29 by aissa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,20 @@ void	add_texture(t_cub *cub, int x, t_ray *ray)
 	t_img	*tex;
 	int		tex_slice;
 	int		tex_y;
-	int		y;
 	double	step;
 	double	tex_pos;
-	char	*color;
 
 	tex = choose_wall_texture(cub, ray);
 	tex_slice = get_tex_slice(cub, ray, tex);
 	step = (double)tex->height / ray->line_height;
-	tex_pos = (ray->draw_start - WIN_HEIGHT / 2
-			+ ray->line_height / 2) * step;
-	y = ray->draw_start;
-	while (y < ray->draw_end)
+	tex_pos = (ray->draw_start - WIN_HEIGHT / 2 + ray->line_height / 2) * step;
+	while (ray->draw_start < ray->draw_end)
 	{
 		tex_y = (int)tex_pos % tex->height;
 		tex_pos += step;
-		color = tex->addr + (tex_y * tex->line_len
-				+ tex_slice * (tex->bpp / 8));
-		my_pixel_put(&cub->mlx, x, y, *(unsigned int *)color);
-		y++;
+		my_pixel_put(&cub->mlx, x, ray->draw_start,
+			*(unsigned int *)(tex->addr
+				+ (tex_y * tex->line_len + tex_slice * (tex->bpp / 8))));
+		ray->draw_start++;
 	}
 }
