@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaissa <aaissa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aissa <aissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 16:02:40 by aaissa            #+#    #+#             */
-/*   Updated: 2025/10/02 16:18:14 by aaissa           ###   ########.fr       */
+/*   Updated: 2025/10/04 09:45:40 by aissa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,10 @@ static void	render_walls(t_cub *cub, int x, t_ray *ray)
 
 void	set_ray(t_cub *cub, t_ray *ray, double camera_x)
 {
-	ray->camera_x = camera_x;
 	ray->ray_dir_x = cub->player.dir_x
-		+ cub->player.plane_x * ray->camera_x;
+		+ cub->player.plane_x * camera_x;
 	ray->ray_dir_y = cub->player.dir_y
-		+ cub->player.plane_y * ray->camera_x;
+		+ cub->player.plane_y * camera_x;
 	ray->map_x = (int)cub->player.x;
 	ray->map_y = (int)cub->player.y;
 	if (ray->ray_dir_x == 0)
