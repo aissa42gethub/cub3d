@@ -6,7 +6,7 @@
 /*   By: aissa <aissa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:11:07 by azrulsaleh        #+#    #+#             */
-/*   Updated: 2025/10/02 15:38:50 by aaissa           ###   ########.fr       */
+/*   Updated: 2025/10/04 09:48:16 by aissa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_minimap
 
 typedef struct s_ray
 {
-	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
 	int		map_x;
